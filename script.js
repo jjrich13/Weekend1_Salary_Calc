@@ -46,10 +46,12 @@ function handleSubmit(){
     employees.push(addedEmployee);
     //clear inputs
     clearInputs();
-    //clear DOM?
+    //clear DOM because the whole array will be pushed each time
+    $('#EmployeeTable').empty();
     //loop through array and push to DOM
+    loopAndPushToDom();
     //Sum Salaries and divide by 12 months
-    //clear inputs
+    
     
 
 }
@@ -69,4 +71,24 @@ function clearInputs(){
     $('#idNum').val('');
     $('#jobTitle').val('');
     $('#annualSalary').val('');
+}
+
+function loopAndPushToDom(){
+    for (let i = 0; i < employees.length; i++) {
+        pushToDom(employees[i].firstName, employees[i].lastName, employees[i].idNum, employees[i].jobTitle, employees[i].annualSalary);
+        // console.log(employees[i]);
+        
+    }
+}
+
+function pushToDom(firstName, lastName, idNum, jobTitle, annualSalary){
+    let $row = $('<tr></tr>');
+    $row.append(`<td>${firstName}</td>`)
+    $row.append(`<td>${lastName}</td>`)
+    $row.append(`<td>${idNum}</td>`)
+    $row.append(`<td>${jobTitle}</td>`)
+    $row.append(`<td>${annualSalary}</td>`)
+    // $row.append(`<td>DUDE</td>`)
+    $('#EmployeeTable').append($row);
+    
 }
