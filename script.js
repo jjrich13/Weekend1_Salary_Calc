@@ -6,6 +6,12 @@ function readyNow(){
     console.log('JQ');
     
     addClickHandlers();
+    
+    let newEmployee = new Employee('Post', 'Malone', '45', 'Artist', '2500000')
+    let newerEmployee = new Employee('John', 'Mayer', '8', 'Blues Singer', '4000000' )
+    employees.push(newEmployee);
+    employees.push(newerEmployee);
+    loopAndPushToDom();
 }
 
 //Create class with Constructor
@@ -31,6 +37,8 @@ let annualSalary;
 function addClickHandlers(){
     //Handle submit click
     $('#submit').on('click', handleSubmit);
+    //handle delete 
+    $('#EmployeeTable').on('click', '.deleteButton', handleDelete);
 }
 
 function handleSubmit(){
@@ -88,7 +96,12 @@ function pushToDom(firstName, lastName, idNum, jobTitle, annualSalary){
     $row.append(`<td>${idNum}</td>`)
     $row.append(`<td>${jobTitle}</td>`)
     $row.append(`<td>${annualSalary}</td>`)
-    // $row.append(`<td>DUDE</td>`)
+    //add button
+    $row.append(`<td><button class="deleteButton">Delete</button></td>`);
     $('#EmployeeTable').append($row);
     
+}
+
+function handleDelete(){
+    $(this).closest('tr').remove();
 }
