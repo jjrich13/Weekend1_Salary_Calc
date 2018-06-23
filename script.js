@@ -59,6 +59,7 @@ function handleSubmit(){
     //loop through array and push to DOM
     loopAndPushToDom();
     //Sum Salaries and divide by 12 months
+    console.log(sumSalaries());
     
     
 
@@ -95,7 +96,7 @@ function pushToDom(firstName, lastName, idNum, jobTitle, annualSalary){
     $row.append(`<td>${lastName}</td>`)
     $row.append(`<td>${idNum}</td>`)
     $row.append(`<td>${jobTitle}</td>`)
-    $row.append(`<td>${annualSalary}</td>`)
+    $row.append(`<td class="sumTarget">${annualSalary}</td>`)
     //add button
     $row.append(`<td><button class="deleteButton">Delete</button></td>`);
     $('#EmployeeTable').append($row);
@@ -104,4 +105,9 @@ function pushToDom(firstName, lastName, idNum, jobTitle, annualSalary){
 
 function handleDelete(){
     $(this).closest('tr').remove();
+}
+
+function sumSalaries(){
+    //find the index of the employee, then splice it out of the array, use loop to sum values
+    //also use parseInt()
 }
