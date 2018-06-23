@@ -5,13 +5,15 @@ $(document).ready(readyNow)
 function readyNow(){
     console.log('JQ');
     
-    addClickHandlers();
+    
     
     let newEmployee = new Employee('Post', 'Malone', '45', 'Artist', '2500000')
     let newerEmployee = new Employee('John', 'Mayer', '8', 'Blues Singer', '4000000' )
     employees.push(newEmployee);
     employees.push(newerEmployee);
     loopAndPushToDom();
+
+    addClickHandlers();
 }
 
 //Create class with Constructor
@@ -34,11 +36,13 @@ let idNum;
 let jobTitle;
 let annualSalary;
 
+let targetIdNum;
+
 function addClickHandlers(){
     //Handle submit click
     $('#submit').on('click', handleSubmit);
     //handle delete 
-    $('#EmployeeTable').on('click', '.deleteButton', handleDelete);
+    $('#employeeTable').on('click', '.deleteButton', handleDelete);
 }
 
 function handleSubmit(){
@@ -55,7 +59,7 @@ function handleSubmit(){
     //clear inputs
     clearInputs();
     //clear DOM because the whole array will be pushed each time
-    $('#EmployeeTable').empty();
+    $('#employeeTable').empty();
     //loop through array and push to DOM
     loopAndPushToDom();
     //Sum Salaries and divide by 12 months
@@ -92,22 +96,40 @@ function loopAndPushToDom(){
 
 function pushToDom(firstName, lastName, idNum, jobTitle, annualSalary){
     let $row = $('<tr></tr>');
-    $row.append(`<td>${firstName}</td>`)
-    $row.append(`<td>${lastName}</td>`)
-    $row.append(`<td>${idNum}</td>`)
-    $row.append(`<td>${jobTitle}</td>`)
-    $row.append(`<td class="sumTarget">${annualSalary}</td>`)
+    $row.append(`<td>${firstName}</td>`);
+    $row.append(`<td>${lastName}</td>`);
+    $row.append(`<td class="idTarget">${idNum}</td>`);
+    $row.append(`<td>${jobTitle}</td>`);
+    $row.append(`<td class="sumTarget">${annualSalary}</td>`);
     //add button
     $row.append(`<td><button class="deleteButton">Delete</button></td>`);
-    $('#EmployeeTable').append($row);
+    $('#employeeTable').append($row);
     
 }
 
 function handleDelete(){
-    $(this).closest('tr').remove();
+    // $(this).closest('tr').remove();
+    // $(this).next().remove();
+    //replace this with something that splices the dude/dudette out of the array
+    //get the idNum of the employee in this row
+    targetIdNum = $(this).closest('tr').find('.idTarget').text();
+    let i = findIndexByID(targetIdNum);
+    employees.splice(i,1);
+    $('#employeeTable').empty();
+    loopAndPushToDom();
+    
+    
 }
 
 function sumSalaries(){
     //find the index of the employee, then splice it out of the array, use loop to sum values
     //also use parseInt()
+}
+
+function findIndexByID(idNumFind){
+    for(let i = 0; i < employees.length; i ++) {
+        if(employees[i].idNum == idNumFind) {
+            return i;
+        }
+    }
 }
