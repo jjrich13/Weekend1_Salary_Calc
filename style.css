@@ -2,6 +2,14 @@
     color: red;
 }
 
-footer{
+footer {
     float: right;
+}
+
+.redBackground {
+    background-color: red;
+}
+
+#warning {
+    color: red;
 }

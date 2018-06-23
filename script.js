@@ -52,7 +52,8 @@ function handleSubmit(){
     
     //collect employee info
     collectEmployeeInfo();
-    
+    if (collectEmployeeInfo()) {
+        
     //make new employee with input data
     let addedEmployee = new Employee(firstName, lastName, idNum, jobTitle, annualSalary);
     //push to array
@@ -65,8 +66,14 @@ function handleSubmit(){
     loopAndPushToDom();
     //Sum Salaries and divide by 12 months
     displaySumSal();
-    
-    
+    $('#warning').empty();// this does not seem to work right
+    }
+    else{
+        //append Missing fields into input dealio
+        $('#warning').empty();//this isn't really working right now
+        $('#inputs').append('<span id="warning">Missing Fields!</span>');
+        console.log('missing fields');
+    }
 
 }
 
@@ -76,8 +83,13 @@ function collectEmployeeInfo(){
     idNum = $('#idNum').val();
     jobTitle = $('#jobTitle').val();
     annualSalary = $('#annualSalary').val();
-    
-}
+    if (firstName === '' || lastName === '' || idNum === '' || jobTitle === '' || annualSalary === '') {
+        return false;
+    }
+    else{
+        return true;
+    }
+}//makes inputs into varibales to work with/returns false if inputs are missing
 
 function clearInputs(){
     $('#firstName').val('');
@@ -85,7 +97,7 @@ function clearInputs(){
     $('#idNum').val('');
     $('#jobTitle').val('');
     $('#annualSalary').val('');
-}
+}// clears the inputs
 
 function loopAndPushToDom(){
     for (let i = 0; i < employees.length; i++) {
@@ -142,11 +154,13 @@ function displaySumSal(){
     $('footer').empty();
     let sumSal = sumSalaries();
     $('footer').append(`<p>${sumSal.toFixed(2)}</p>`)
+    if (sumSal > 20000) {
+        $('footer').addClass('redBackground')
+    }
 }//this sums the salaries and then appends it to the footer
 
 
 //TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO
-//make it go red
-//add more styling
+//add more styling - make it look like the picture
 //make it so you cannot click submit if there are missing fields
 //return some text that tells you that fields are missing
