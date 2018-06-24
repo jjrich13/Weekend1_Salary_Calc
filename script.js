@@ -55,22 +55,22 @@ function handleSubmit(){
     if (collectEmployeeInfo()) {
         
     //make new employee with input data
-    let addedEmployee = new Employee(firstName, lastName, idNum, jobTitle, annualSalary);
-    //push to array
-    employees.push(addedEmployee);
-    //clear inputs
-    clearInputs();
-    //clear DOM because the whole array will be pushed each time
-    $('#employeeTable').empty();
-    //loop through array and push to DOM
-    loopAndPushToDom();
-    //Sum Salaries and divide by 12 months
-    displaySumSal();
-    $('#warning').empty();// this does not seem to work right
+        let addedEmployee = new Employee(firstName, lastName, idNum, jobTitle, annualSalary);
+        //push to array
+        employees.push(addedEmployee);
+        //clear inputs
+        clearInputs();
+        //clear DOM because the whole array will be pushed each time
+        $('#employeeTable').empty();
+        //loop through array and push to DOM
+        loopAndPushToDom();
+        //Sum Salaries and divide by 12 months
+        displaySumSal();
+        $('#warning').remove();// this does not seem to work right
     }
     else{
         //append Missing fields into input dealio
-        $('#warning').empty();//this isn't really working right now
+        $('#warning').remove();//this isn't really working right now
         $('#inputs').append('<span id="warning">Missing Fields!</span>');
         console.log('missing fields');
     }
