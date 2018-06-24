@@ -13,3 +13,19 @@ footer {
 #warning {
     color: red;
 }
+
+header {
+    padding-top: 40px;
+}
+
+#display {
+    padding-top: 25px;
+}
+
+h3, h1 {
+    padding: 15px;
+}
+
+input  {
+    padding: 15px;
+}

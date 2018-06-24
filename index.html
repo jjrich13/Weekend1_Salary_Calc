@@ -10,7 +10,7 @@
 </head>
 <body class="container">
     <header>
-
+        <h1>Salary Calculator</h1>
     </header>
 
     <main>
@@ -21,28 +21,30 @@
             <input class="form-control" id="jobTitle" type="text" placeholder="Job Title">
             <input class="form-control" id="annualSalary" type="number" placeholder="Annual Salary">
             <button id="submit">Submit</button>
-
         </div>
-        <div id="employeeTableDiv">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Annual Salary</th>
-                        <th>Delete?</th>
-                    </tr>
+        <div id="display">
+            <div>
+                <h3>Employees</h3>
+            </div>
+            <div id="employeeTableDiv">
+                <table class="table-hover table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Annual Salary</th>
+                            <th>Delete?</th>
+                        </tr>
 
-                </thead>
-                    <tbody id="employeeTable">
+                    </thead>
+                        <tbody id="employeeTable">
 
-                </tbody>
-            </table>
-
+                        </tbody>
+                </table>
+            </div>
         </div>
-
     </main>
     
     <footer>

@@ -53,7 +53,6 @@ function handleSubmit(){
     //collect employee info
     collectEmployeeInfo();
     if (collectEmployeeInfo()) {
-        
     //make new employee with input data
         let addedEmployee = new Employee(firstName, lastName, idNum, jobTitle, annualSalary);
         //push to array
@@ -89,7 +88,7 @@ function collectEmployeeInfo(){
     else{
         return true;
     }
-}//makes inputs into varibales to work with/returns false if inputs are missing
+}//makes inputs into varibales to work with and returns false if inputs are missing
 
 function clearInputs(){
     $('#firstName').val('');
@@ -153,7 +152,7 @@ function findIndexByID(idNumFind){
 function displaySumSal(){
     $('footer').empty();
     let sumSal = sumSalaries();
-    $('footer').append(`<p>${sumSal.toFixed(2)}</p>`)
+    $('footer').append(`<p class="card-body">Total monthly: $${sumSal.toFixed(2)}</p>`)
     if (sumSal > 20000) {
         $('footer').addClass('redBackground')
     }
@@ -162,5 +161,3 @@ function displaySumSal(){
 
 //TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO TO DO
 //add more styling - make it look like the picture
-//make it so you cannot click submit if there are missing fields
-//return some text that tells you that fields are missing
