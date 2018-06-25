@@ -16,6 +16,7 @@ footer {
 
 header {
     padding-top: 40px;
+    background-color: powderblue;
 }
 
 #display {
@@ -28,4 +29,8 @@ h3, h1 {
 
 input  {
     padding: 15px;
+}
+
+#label {
+    background-color: powderblue;
 }

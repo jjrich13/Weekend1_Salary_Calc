@@ -153,6 +153,7 @@ function displaySumSal(){
     $('footer').empty();
     let sumSal = sumSalaries();
     $('footer').append(`<p class="card-body">Total monthly: $${sumSal.toFixed(2)}</p>`)
+    $('footer').removeClass('redBackground')
     if (sumSal > 20000) {
         $('footer').addClass('redBackground')
     }
